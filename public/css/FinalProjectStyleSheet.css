@@ -1,0 +1,118 @@
+
+body {
+    font-family: Arial;
+    background-color: white;
+    text-align:center;
+    margin: auto;
+    font-size: 20px;
+    padding: 20px;
+  
+}
+
+h1 {
+    font-family: "Brush Script MT";
+    color: #8540b3;
+    
+}
+.topnav {
+  background-color: white;
+  overflow: hidden;
+  margin: auto;
+   font-size: 15px;
+ 
+}
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: none;
+  color: black;
+  text-align: center;
+  vertical-align: center;
+  padding: 20px;
+  text-decoration: none;
+}
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: #8540b3;
+  color: white;
+}
+
+
+/* Add a color to the active/current link */
+.topnav a.active {
+background-color: black;
+  background-color: #8540b3;
+  color: white;
+}
+div.logo{
+	text-align:center;
+}
+
+form {
+
+     vertical-align: middle;
+      text-align: center;
+      color: #8540b3;
+      border: #8540b3 3px solid;
+      margin-left: 400px;
+      margin-right: 400px;
+      margin-top: 75px;
+      padding: 50px;
+}
+
+#comments{
+    width: 22rem;
+    margin-bottom: 2rem;
+}
+
+table {
+    
+    border-spacing: 20px;
+     color: #8540b3;
+     font-family: Arial;
+    background-color: white;
+    text-align:left;
+    margin: auto;
+    font-size: 20px;
+    
+}
+
+.rslides {
+  position: relative;
+  list-style: none;
+  overflow: hidden;
+  width: 100%;
+  padding: 0;
+  margin: auto;
+  }
+
+.rslides li {
+  -webkit-backface-visibility: hidden;
+  position: absolute;
+  display: none;
+  width: 100%;
+  left: 0;
+  top: 0;
+  }
+
+.rslides li:first-child {
+  position: relative;
+  display: block;
+  float: left;
+  }
+
+.rslides img {
+  display: block;
+  height: auto;
+  float: left;
+  width: 100%;
+  border: 0;
+  }
+  
+ #footer {  
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  width: 98%;
+  height: 2.5rem;
+  
+ }
