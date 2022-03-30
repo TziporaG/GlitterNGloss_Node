@@ -42,11 +42,11 @@ http.createServer(function (req, res) {
                             }
                         } else {
 
-                            res.write("<br><b>You registered succesfully!</b>");
+                            res.write("<br><b>You registered succesfully!</b><br>");
                             console.log("Added to the Database ");
                         }
                     } catch (err) {
-                        res.write("<br><b>Username already in use. Please try again.</b>");
+                        res.write("<br><b>Username already in use. Please try again.</b><br>");
                         console.log("ERROR CAUGHT");
                     }
 
