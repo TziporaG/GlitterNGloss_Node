@@ -1,0 +1,14 @@
+doctype html
+html
+    head
+        title Glitter N' Gloss
+    body
+        nav
+            each item, i in menu
+                a(href=item.url) 
+                    li=item.title
+        block content
+        br
+        hr
+        footer
+            p Copyright &copy; 2022
