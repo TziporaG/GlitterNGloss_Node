@@ -5,7 +5,7 @@
  http.createServer(function(req, res){
     var q = url.parse(req.url, true);
     res.writeHead(200, {'Content-type': 'text/html'});
-     fs.readFile("form3.html", function(err, data){
+     fs.readFile("contact.pug", function(err, data){
      	//Choose a port to run it on that's not used by Apache (e.g. 8099)
          if(err){
              res.writeHead(200, {'Content-type': 'text/html'});
@@ -14,20 +14,20 @@
          res.write(data);
      });
 // your form's action should match the query.pathname that you'll use to handle it in your js file
-     if(q.pathname == "/form"){
+     if(q.pathname == "/contact"){
         var query = q.query;
         console.log(query);
         console.log(query.fname);
         console.log("You did a get from form.");
         console.log(q.pathname);
         res.write("Name: " + query.fname + " " + query.lname );
-        res.write("<br>Review: " + query.message);
-        res.write("<br>Product: " + query.prod);
-        res.write("<br>Email: " + query.email);
-        res.write("<br>Age: "+query.age);
+        res.write("Review: " + query.message);
+        res.write("roduct: " + query.prod);
+        res.write("mail: " + query.email);
+        res.write("Age: "+query.age);
         
         sendAnEmail( query.fname, query.lname, query.message,query.prod, query.email, query.age);
-        res.write("<br>We have received your information");
+        res.write("We have received your information");
 
     }
 
