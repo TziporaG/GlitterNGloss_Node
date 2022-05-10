@@ -1,0 +1,23 @@
+doctype html
+html
+  head
+    title #{title}
+    link(rel='stylesheet', href='css/FinalProjectStyleSheet.css')
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+  body
+    main
+    div.flex_container
+      block header
+          header.page_title
+            img(src='pictures/logo.png').logo
+            |
+      nav
+        each item, i in menu
+             a(href=item.url) 
+                  li=item.title
+          
+      block content
+      br
+      hr
+  footer
+      p Copyright &copy; 2022

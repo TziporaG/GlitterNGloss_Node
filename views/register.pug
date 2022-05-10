@@ -1,6 +1,8 @@
 extends layout
 block content
-    form(action="my_database.js" method="get")
+    h1 #{title}
+    p #{content}
+    form( method="POST" action='/register_action')
         h1 Register
         input(type="text" name="username" placeholder="username" required)
         br

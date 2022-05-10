@@ -2,9 +2,9 @@
 body {
     font-family: Arial;
     background-color: white;
-    text-align:center;
+    text-align:left;
     margin: auto;
-    font-size: 20px;
+    font-size: 15px;
     padding: 20px;
   
 }
@@ -43,8 +43,10 @@ background-color: black;
   background-color: #8540b3;
   color: white;
 }
-div.logo{
+.logo{
 	text-align:center;
+        width: 100px;
+        height: 100px;
 }
 
 form {
@@ -75,38 +77,6 @@ table {
     font-size: 20px;
     
 }
-
-.rslides {
-  position: relative;
-  list-style: none;
-  overflow: hidden;
-  width: 100%;
-  padding: 0;
-  margin: auto;
-  }
-
-.rslides li {
-  -webkit-backface-visibility: hidden;
-  position: absolute;
-  display: none;
-  width: 100%;
-  left: 0;
-  top: 0;
-  }
-
-.rslides li:first-child {
-  position: relative;
-  display: block;
-  float: left;
-  }
-
-.rslides img {
-  display: block;
-  height: auto;
-  float: left;
-  width: 100%;
-  border: 0;
-  }
   
  #footer {  
   text-align: center;

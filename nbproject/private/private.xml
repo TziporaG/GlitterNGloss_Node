@@ -3,26 +3,25 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/GlitterNGloss_Node/package.json</file>
-            <file>file:/C:/xampp/htdocs/GlitterNGloss_Node/views/contact.pug</file>
-            <file>file:/C:/xampp/htdocs/GlitterNGloss_Node/views/eye.pug</file>
-            <file>file:/C:/xampp/htdocs/GlitterNGloss_Node/public/pages/form3.js</file>
-            <file>file:/C:/xampp/htdocs/GlitterNGloss_Node/views/register.pug</file>
-            <file>file:/C:/xampp/htdocs/GlitterNGloss_Node/views/layout.pug</file>
-            <file>file:/C:/xampp/htdocs/GlitterNGloss_Node/views/cart.pug</file>
-            <file>file:/C:/xampp/htdocs/GlitterNGloss_Node/views/menu.pug</file>
-            <file>file:/C:/xampp/htdocs/GlitterNGloss_Node/views/home.pug</file>
-            <file>file:/C:/xampp/htdocs/GlitterNGloss_Node/public/pages/form3.html</file>
-            <file>file:/C:/xampp/htdocs/GlitterNGloss_Node/main.js</file>
-            <file>file:/C:/xampp/htdocs/GlitterNGloss_Node/views/locations.pug</file>
-            <file>file:/C:/xampp/htdocs/GlitterNGloss_Node/views/lip.pug</file>
-            <file>file:/C:/xampp/htdocs/GlitterNGloss_Node/views/consultations.pug</file>
-            <file>file:/C:/xampp/htdocs/GlitterNGloss_Node/public/pages/my_database.js</file>
-            <file>file:/C:/xampp/htdocs/GlitterNGloss_Node/views/about.pug</file>
-            <file>file:/C:/xampp/htdocs/GlitterNGloss_Node/views/sale.pug</file>
-            <file>file:/C:/xampp/htdocs/GlitterNGloss_Node/views/face.pug</file>
-            <file>file:/C:/xampp/htdocs/GlitterNGloss_Node/views/brushes.pug</file>
-            <file>file:/C:/xampp/htdocs/GlitterNGloss_Node/views/reviews.pug</file>
+            <file>file:/C:/xampp/htdocs/FinalProjectNode/views/lip.pug</file>
+            <file>file:/C:/xampp/htdocs/FinalProjectNode/Product.js</file>
+            <file>file:/C:/xampp/htdocs/FinalProjectNode/views/brushes.pug</file>
+            <file>file:/C:/xampp/htdocs/FinalProjectNode/views/my_database.js</file>
+            <file>file:/C:/xampp/htdocs/FinalProjectNode/views/about.pug</file>
+            <file>file:/C:/xampp/htdocs/FinalProjectNode/views/register.pug</file>
+            <file>file:/C:/xampp/htdocs/FinalProjectNode/views/home.pug</file>
+            <file>file:/C:/xampp/htdocs/FinalProjectNode/views/eye.pug</file>
+            <file>file:/C:/xampp/htdocs/FinalProjectNode/main.js</file>
+            <file>file:/C:/xampp/htdocs/FinalProjectNode/views/layout.pug</file>
+            <file>file:/C:/xampp/htdocs/FinalProjectNode/views/confirmation.pug</file>
+            <file>file:/C:/xampp/htdocs/FinalProjectNode/views/face.pug</file>
+            <file>file:/C:/xampp/htdocs/FinalProjectNode/views/sale.pug</file>
+            <file>file:/C:/xampp/htdocs/FinalProjectNode/public/css/FinalProjectStyleSheet.css</file>
+            <file>file:/C:/xampp/htdocs/FinalProjectNode/views/menu.pug</file>
+            <file>file:/C:/xampp/htdocs/FinalProjectNode/views/reviews.pug</file>
+            <file>file:/C:/xampp/htdocs/FinalProjectNode/views/consultations.pug</file>
+            <file>file:/C:/xampp/htdocs/FinalProjectNode/views/locations.pug</file>
+            <file>file:/C:/xampp/htdocs/FinalProjectNode/views/cart.pug</file>
         </group>
     </open-files>
 </project-private>
