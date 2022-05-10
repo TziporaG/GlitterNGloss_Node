@@ -1,4 +1,4 @@
-var express = require('express');
+/*var express = require('express');
 var mysql = require('mysql');
 
 var app = express();
@@ -63,4 +63,4 @@ app.get('/brushes', function(req, res) {
 
 app.listen(8080, function () {
     console.log('listening on port', 8080);
-});
+});*/

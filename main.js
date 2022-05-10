@@ -99,19 +99,17 @@ app.get("/lip", function(req, res) {
 
 app.get("/brushes", function(req, res) {
         try{
-            allproducts = getproducts();
-            getProducts((allProducts) =>{
-                        res.render("brushes", {
+            allProducts = getProducts();
+                    res.render("brushes", {
                     title: "Brushes",
                     list: allProducts,
                     content: 'Here are the brushes',
                     menu: menu
                 });
-                });
     
      }
         catch(error){
-            console.log('error with database');
+            console.log('error with database line 115');
         }  
         
    });
@@ -177,6 +175,7 @@ app.post('/register_action', (req, res) => {
     registerToDatabase();
     res.render('confirmation', {
         title: 'Confirmation',
+        menu: menu
     });
 });
 
@@ -198,26 +197,29 @@ function getProducts(){
 
     con.connect(function(err){
         var products = [];
-        if(err) throw err;
+        if(err) {
+
+                    throw err;}
         else{
             console.log("connected!");
         }
         var sql = "select * from products";
         con.query(sql, function(err, result, fields){
             if (err){
-                console.log("error here");
+                console.log("error line 208");
                 throw err;
             } 
             for(var i = 0; i < result.length; i++){
                 //if(result[i].category === 'brush') {
                    // console.log(result[i].CLASS_NAME);
                 var Product = {
-                    'name':result[i].descripition,
+                    'name':result[i].description,
                     'price':result[i].price,
                     'color':result[i].color
                 };
                 products.push(Product);
                 //}
+                 console.log("in loop");
                 
             }
             
@@ -237,17 +239,19 @@ function registerToDatabase() {
     database: "node_project"
 });
 con.connect(function (err) {
-    if (err)
-        throw err;
+    if (err) {
+        console.log('ERROR line 241');
+        throw err; }
     console.log("Connected!");
 });
 
 http.createServer(function (req, res) {
     var q = url.parse(req.url, true);
-    res.writeHead(200, {'Content-type': 'text/html'});
+    res.writeHead(200, {'Content-type': 'pug'});
     fs.readFile("/register", function (err, data) {
         if (err) {
             res.writeHead(200, {'Content-Type': 'pug'});
+             console.log('ERROR line 252');
             return res.end("404 Not Found");
         }
         res.write(data);
@@ -263,6 +267,7 @@ http.createServer(function (req, res) {
                         if (err) {
 
                             if (err.errno === 1062) {
+                                 console.log('ERROR line 268');
                                 throw new Error('Duplicate username');
                             } else {
                                 throw err;
@@ -274,7 +279,7 @@ http.createServer(function (req, res) {
                         }
                     } catch (err) {
                         res.write("<br><b>Username already in use. Please try again.</b><br>");
-                        console.log("ERROR CAUGHT");
+                        console.log("ERROR linie 280");
                     }
 
                 });
@@ -287,8 +292,9 @@ http.createServer(function (req, res) {
         res.write("<br><br><u>Usernames already in use:</u>");
         var sql = "SELECT UserName FROM validusers";
         con.query(sql, function (err, result) {
-            if (err)
-                throw err;
+            if (err) {
+                console.log('ERROR line 294');
+                throw err;}
             console.log("Database Shown");
             if (result) {
                 for (var i of result) {
