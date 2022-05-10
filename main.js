@@ -99,13 +99,15 @@ app.get("/lip", function(req, res) {
 
 app.get("/brushes", function(req, res) {
         try{
-            allProducts = getProducts();
+            allProducts = getProducts(() => {
+                console.log("on line 104");
                     res.render("brushes", {
                     title: "Brushes",
                     list: allProducts,
                     content: 'Here are the brushes',
                     menu: menu
                 });
+            });
     
      }
         catch(error){
