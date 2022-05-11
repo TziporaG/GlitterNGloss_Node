@@ -4,6 +4,7 @@ const path = require('path');
 var mysql = require('mysql');
 var http = require('http');
 var fs = require('fs');
+var nodemailer = require('nodemailer');
 var url = require('url');
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -150,6 +151,10 @@ app.get("/contact", function(req, res) {
     });
 });
 
+app.post("/contact_action", function(req, res) {
+    sendEmail(req.body, res);
+});
+
 app.get("/cart", function(req, res) {
     res.render("cart", {
         title: 'Cart',
@@ -163,6 +168,7 @@ app.get("/register", function(req, res) {
         title: 'Register',
         content: 'Register for our website here',
         menu: menu
+        
     });
 });
 
@@ -259,22 +265,22 @@ con.connect(function (err) {
                             }
                         } else {
                             
-                            message += "<br><b>You registered succesfully!</b><br>";
+                            message += "You registered succesfully!";
                             console.log("Added to the Database ");
                         }
                     } catch (err) {
-                        message += ("<br><b>Username already in use. Please try again.</b><br>");
-                        console.log("ERROR linie 280");
+                        message += ("Username already in use. Please try again.");
+                        console.log("ERROR line 280");
                     }
 
                 });
             } else {
-                message += ("<br><b>Passwords do not match.<br>Please try again.</b>");
+                message += ("Passwords do not match.Please try again.");
                 console.log("Passwords do not match");
             };
         
         //pass into confirmation message variable
-        message +=("<br><br><u>Usernames already in use:</u>");
+        message +=("List of usernames already in use:");
         var sql = "SELECT UserName FROM validusers";
         con.query(sql, function (err, result) {
             if (err) {
@@ -283,12 +289,50 @@ con.connect(function (err) {
             console.log("Database Shown");
             if (result) {
                 for (var i of result) {
-                    message += ("<br>Username: " + i.UserName);
+                    message += ("\nUsername: " + i.UserName);
                 }
                 ;
             }
             ;
         });
+        res.render('confirmation', {
+        title: 'Confirmation',
+        menu: menu,
+        msg: message
+    });
+        }
+        
+  function sendEmail(query, res) {
+        var transport = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: 'glitterngloss6@gmail.com',
+            pass: 'PHPTermProject2022'
+        }
+    });
+
+  
+       var mailOptions = {
+        from: 'glitterngloss6@gmail.comm', 
+        to: 'glitterngloss6@gmail.com',
+        subject: 'Message received from form submission', 
+        html: '<h3>From: ' + query.fname + ' ' + query.lname + '</h3>'+
+        '<h3>Email Address: ' + query.emailAdd + '</h3>' +
+        '<h2>Review:</h2><p>' + query.message + '</p>'+
+        '<h2>Product:' + query.prod + '</h2>'+
+        '<h2>Age:' + query.age + '</h2>',
+    
+    };
+
+    transport.sendMail(mailOptions, function(error, info){
+        if(error){
+            console.log(error);
+        }
+         else {
+            console.log('Email sent: ' + info.response);
+        }
+    });
+        var message = "Looking forward to reading your review!";
         res.render('confirmation', {
         title: 'Confirmation',
         menu: menu,
