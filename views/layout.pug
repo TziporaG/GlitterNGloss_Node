@@ -12,9 +12,13 @@ html
             img(src='pictures/logo.png').logo
             |
       nav
-        each item, i in menu
-             a(href=item.url) 
-                  li=item.title
+      each item, i in menu
+             a(href=item.url)
+                  td=item.title
+                    ="__|__"
+               
+
+
           
       block content
       br

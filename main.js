@@ -18,20 +18,8 @@ let menu = [
         url: "/"
     },
     {
-        title: "Face Products",
-        url: "/face"
-    },
-    {
-        title: "Eye Products",
-        url: "/eye"
-    },
-    {
-        title: "Lip Products",
-        url: "/lip"
-    },
-    {
-        title: "Brushes",
-        url: "/brushes"
+        title: "Products",
+        url: "/products"
     },
     {
         title: "Sale",
@@ -69,45 +57,20 @@ let menu = [
 app.get("/", function(req, res) {
     res.render("home", {
         title: 'Home',
-        content: 'This is the home page',
+        content: 'Welcome to Glitter n Gloss!',
         menu: menu
     });
 });
 
-app.get("/face", function(req, res) {
-    res.render("face", {
-        title: 'Face Products',
-        content: 'Here are the face products',
-        menu: menu
-    });
-});
 
-app.get("/eye", function(req, res) {
-    res.render("eye", {
-        title: 'Eye Products',
-        content: 'Here are the eye products',
-        menu: menu
-    });
-});
-
-app.get("/lip", function(req, res) {
-    res.render("lip", {
-        title: 'Lip Products',
-        content: 'Here are the lip products',
-        menu: menu
-    });
-});
-
-app.get("/brushes", function(req, res) {
+app.get("/products", function(req, res) {
     console.log("on line 101");
-        //try{
+        try{
             getProducts(res);
-    
-     //}
-//        catch(error){
-//            console.log('error with database line 115');
-//        }  
-        
+     }
+       catch(error){
+           console.log('error with database line 115');
+                }  
    });
 
 app.get("/sale", function(req, res) {
@@ -222,10 +185,10 @@ function getProducts(res){
             }
             
             console.log("done looping");
-            res.render("brushes", {
-                    title: "Brushes",
+            res.render("products", {
+                    title: "Products",
                     list: products,
-                    content: 'Here are the brushes',
+                    content: 'Here are the products',
                     menu: menu
                 });
         });
@@ -258,14 +221,16 @@ con.connect(function (err) {
                         if (err) {
 
                             if (err.errno === 1062) {
-                                 console.log('ERROR line 268');
+                                 console.log('ERROR line 268'); 
+                                 message += ("Username already in use");
                                 throw new Error('Duplicate username');
+                                
                             } else {
                                 throw err;
                             }
                         } else {
                             
-                            message += "You registered succesfully!";
+                            message += ("You registered succesfully!");
                             console.log("Added to the Database ");
                         }
                     } catch (err) {
@@ -279,22 +244,6 @@ con.connect(function (err) {
                 console.log("Passwords do not match");
             };
         
-        //pass into confirmation message variable
-        message +=("List of usernames already in use:");
-        var sql = "SELECT UserName FROM validusers";
-        con.query(sql, function (err, result) {
-            if (err) {
-                console.log('ERROR line 294');
-                throw err;}
-            console.log("Database Shown");
-            if (result) {
-                for (var i of result) {
-                    message += ("\nUsername: " + i.UserName);
-                }
-                ;
-            }
-            ;
-        });
         res.render('confirmation', {
         title: 'Confirmation',
         menu: menu,

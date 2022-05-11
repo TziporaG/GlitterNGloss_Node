@@ -1,7 +1,6 @@
 extends layout
 block content
     h1 #{title}
-    p #{content}
     -var products = [];
     -products = list;
     table
@@ -12,6 +11,6 @@ block content
       each p in products
         tr
           td=p.name
+          td='$' + p.price
           td=p.color
-          td=p.price
           

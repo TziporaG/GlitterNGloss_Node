@@ -2,7 +2,7 @@
 body {
     font-family: Arial;
     background-color: white;
-    text-align:left;
+    text-align:center;
     margin: auto;
     font-size: 15px;
     padding: 20px;
@@ -14,11 +14,17 @@ h1 {
     color: #8540b3;
     
 }
+
+img {
+     width: 400px;
+     height: 400px;
+}
 .topnav {
   background-color: white;
   overflow: hidden;
   margin: auto;
    font-size: 15px;
+   text-align: left;
  
 }
 /* Style the links inside the navigation bar */
@@ -51,7 +57,7 @@ background-color: black;
 
 form {
 
-     vertical-align: middle;
+      vertical-align: middle;
       text-align: center;
       color: #8540b3;
       border: #8540b3 3px solid;
