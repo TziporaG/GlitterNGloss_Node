@@ -5,8 +5,8 @@ var mysql = require('mysql');
 var http = require('http');
 var fs = require('fs');
 var url = require('url');
-//const bodyParser = require('body-parser');
-//app.use(bodyParser.urlencoded({ extended: false }));
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(__dirname + '/public'));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
@@ -98,21 +98,14 @@ app.get("/lip", function(req, res) {
 });
 
 app.get("/brushes", function(req, res) {
-        try{
-            allProducts = getProducts(() => {
-                console.log("on line 104");
-                    res.render("brushes", {
-                    title: "Brushes",
-                    list: allProducts,
-                    content: 'Here are the brushes',
-                    menu: menu
-                });
-            });
+    console.log("on line 101");
+        //try{
+            getProducts(res);
     
-     }
-        catch(error){
-            console.log('error with database line 115');
-        }  
+     //}
+//        catch(error){
+//            console.log('error with database line 115');
+//        }  
         
    });
 
@@ -174,11 +167,8 @@ app.get("/register", function(req, res) {
 });
 
 app.post('/register_action', (req, res) => {
-    registerToDatabase();
-    res.render('confirmation', {
-        title: 'Confirmation',
-        menu: menu
-    });
+    registerToDatabase(req.body, res);
+
 });
 
 app.get("/reviews", function(req, res) {
@@ -189,16 +179,16 @@ app.get("/reviews", function(req, res) {
     });
 });
 
-function getProducts(){
+function getProducts(res){
     var con = mysql.createConnection({
         host: "localhost",
         user: "root",
         password: "",
         database: "node_project"
     });
-
+    var products = [];
     con.connect(function(err){
-        var products = [];
+        
         if(err) {
 
                     throw err;}
@@ -221,19 +211,25 @@ function getProducts(){
                 };
                 products.push(Product);
                 //}
-                 console.log("in loop");
+                 console.log(Product);
                 
             }
             
             console.log("done looping");
-            return products;
+            res.render("brushes", {
+                    title: "Brushes",
+                    list: products,
+                    content: 'Here are the brushes',
+                    menu: menu
+                });
         });
-       // return products; 
+        
     });
+    
 }
 
-function registerToDatabase() {
-    
+function registerToDatabase(query, res) {
+    var message = "";
     var con = mysql.createConnection({
     host: "localhost",
     user: "root",
@@ -246,24 +242,11 @@ con.connect(function (err) {
         throw err; }
     console.log("Connected!");
 });
-
-http.createServer(function (req, res) {
-    var q = url.parse(req.url, true);
-    res.writeHead(200, {'Content-type': 'pug'});
-    fs.readFile("/register", function (err, data) {
-        if (err) {
-            res.writeHead(200, {'Content-Type': 'pug'});
-             console.log('ERROR line 252');
-            return res.end("404 Not Found");
-        }
-        res.write(data);
-
-        if (q.pathname === "/register_action") {
-            var query = q.query;
+    
             if (query.password === query.confirmpassword) {
                 var sql2 = "INSERT INTO validusers (UserName,Password, RoleID) values (\'" + query.username + "\', \'" + query.password +
                         "\', '1')";
-
+                console.log(sql2);
                 con.query(sql2, function (err, result) {
                     try {
                         if (err) {
@@ -275,23 +258,23 @@ http.createServer(function (req, res) {
                                 throw err;
                             }
                         } else {
-
-                            res.write("<br><b>You registered succesfully!</b><br>");
+                            
+                            message += "<br><b>You registered succesfully!</b><br>";
                             console.log("Added to the Database ");
                         }
                     } catch (err) {
-                        res.write("<br><b>Username already in use. Please try again.</b><br>");
+                        message += ("<br><b>Username already in use. Please try again.</b><br>");
                         console.log("ERROR linie 280");
                     }
 
                 });
             } else {
-                res.write("<br><b>Passwords do not match.<br>Please try again.</b>");
+                message += ("<br><b>Passwords do not match.<br>Please try again.</b>");
                 console.log("Passwords do not match");
             };
-        };
         
-        res.write("<br><br><u>Usernames already in use:</u>");
+        //pass into confirmation message variable
+        message +=("<br><br><u>Usernames already in use:</u>");
         var sql = "SELECT UserName FROM validusers";
         con.query(sql, function (err, result) {
             if (err) {
@@ -300,18 +283,16 @@ http.createServer(function (req, res) {
             console.log("Database Shown");
             if (result) {
                 for (var i of result) {
-                    res.write("<br>Username: " + i.UserName);
+                    message += ("<br>Username: " + i.UserName);
                 }
                 ;
             }
             ;
         });
+        res.render('confirmation', {
+        title: 'Confirmation',
+        menu: menu,
+        msg: message
     });
-
-});
-
-
-
-
-}
+        }
 app.listen(8080, () => {console.log("Listening on port 8080");});

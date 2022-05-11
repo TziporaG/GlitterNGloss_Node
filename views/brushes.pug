@@ -3,7 +3,7 @@ block content
     h1 #{title}
     p #{content}
     -var products = [];
-    -products = {list};
+    -products = list;
     table
       tr
         th Name
@@ -11,7 +11,7 @@ block content
         th Color 
       each p in products
         tr
-          td=JSON.stringify(p)
-          td=JSON.stringify(p)
-          td=JSON.stringify(p)
+          td=p.name
+          td=p.color
+          td=p.price
           
